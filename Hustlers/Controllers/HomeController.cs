@@ -25,7 +25,7 @@ namespace Hustlers.Controllers
         public IActionResult Index()
         {
             var user = _userService.Get("hjdopp");
-            
+
             return View(user);
         }
 

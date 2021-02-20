@@ -1,8 +1,11 @@
 ﻿using Hustlers.Domain.Entities;
 using Hustlers.Domain.Interfaces.Repositories;
 using Hustlers.infrastructure.DbContexts;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Hustlers.Infrastructure.Repositories
 {
@@ -24,6 +27,11 @@ namespace Hustlers.Infrastructure.Repositories
                 return true;
             }
             return false;
+        }
+
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        {
+            return this.context.Set<T>().Where(expression).AsNoTracking();
         }
 
         public virtual T Get(string id)

@@ -3,14 +3,16 @@ using System;
 using Hustlers.infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hustlers.Infrastructure.Migrations
 {
     [DbContext(typeof(HustlersContext))]
-    partial class HustlersContextModelSnapshot : ModelSnapshot
+    [Migration("20210219205622_AddedCompanyToJobSeekerJobApplicationTable")]
+    partial class AddedCompanyToJobSeekerJobApplicationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,13 +278,7 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Experience")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("ExperienceLevelId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Introduction")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("IsActive")
@@ -297,13 +293,7 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("ProvinceId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Qualifications")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("RecruiterId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Remuneration")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("StartDate")
