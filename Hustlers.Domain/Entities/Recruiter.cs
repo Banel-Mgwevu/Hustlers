@@ -6,6 +6,8 @@ namespace Hustlers.Domain.Entities
     {
         public string FirstName { set; get; }
         public string LastName { set; get; }
+        public string Phone { set; get; }
+        public string Email { set; get; }
         public string CompanyId { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }

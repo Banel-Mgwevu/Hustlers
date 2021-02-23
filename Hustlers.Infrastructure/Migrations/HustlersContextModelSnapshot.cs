@@ -350,6 +350,9 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("EthnicityId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -369,6 +372,9 @@ namespace Hustlers.Infrastructure.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PersonalProfile")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TitleId")
@@ -619,6 +625,9 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -626,6 +635,9 @@ namespace Hustlers.Infrastructure.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");

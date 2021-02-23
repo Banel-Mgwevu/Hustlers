@@ -7,6 +7,8 @@ namespace Hustlers.Domain.Entities
     public class JobSeeker : HustlersEntity
     {
         public string IdNumber { set; get; }
+        public string Phone { set; get; }
+        public string Email { set; get; }
         public DateTime? DateOfBirth { set; get; }
         public string GenderId { set; get; }
         public string TitleId { set; get; }
