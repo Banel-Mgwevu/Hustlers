@@ -31,6 +31,7 @@ namespace Hustlers.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.AuthError = "empty";
             return View();
         }
 

@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = "_MasterLayout";
+    var UserRole = HttpContextAccessor.HttpContext.Session.GetString("Role");
 }
 
 <!-- Page header -->
@@ -118,50 +119,14 @@
                 </div>
                 <!-- /header -->
                 <!-- Main navigation -->
-                <div class="card-body p-0">
-                    <ul class="nav nav-sidebar" data-nav-type="accordion">
-
-                        <!-- Main -->
-                        <li class="nav-item-header mt-0"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
-                        <li class="nav-item">
-                            <a href="../full/index.html" class="nav-link">
-                                <i class="icon-home4"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-                            <a href="#" class="nav-link"><i class="icon-stack"></i> <span>Recruiter</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Recruiter">
-                                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-                            <a href="#" class="nav-link"><i class="icon-unfold"></i> <span>Job Advert</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Job Advert">
-                                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
-                                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">Configurations</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-                            <a href="#" class="nav-link"><i class="icon-people"></i> <span>Job Seeker</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Job Seeker">
-                                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- /main -->
-
-                    </ul>
-                </div>
+                    @if (UserRole.Equals("Admin"))
+                    {
+                        <partial name="AdminSideNavMenu" />
+                    }
+                    else
+                    {
+                        <partial name="_RecruiterSideNavMenu" />
+                    }
                 <!-- /main navigation -->
 
             </div>
@@ -176,7 +141,7 @@
         <!-- Content area -->
         <div class="content">
 
-        @RenderBody();
+            @RenderBody();
 
         </div>
         <!-- /content area -->
