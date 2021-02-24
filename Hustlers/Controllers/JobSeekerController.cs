@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hustlers.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,17 @@ namespace Hustlers.Controllers
 {
     public class JobSeekerController : Controller
     {
+        IUserService _userService;
+
+        public JobSeekerController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET: JobSeekerController
         public ActionResult Index()
         {
-            return View();
+            return View("Dashboard");
         }
 
         // GET: JobSeekerController/Details/5

@@ -1,0 +1,114 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model User;
+@{
+    Layout = "_MasterLayout";
+}
+
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+        <!-- Content area -->
+        <div class="content">
+            <h1 class="page-title text-center">Welcome To Hustlers Recruitment</h1>
+            <!-- Basic card -->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title"></h5>
+                </div>
+
+                <div class="card-body">
+
+                    <!-- Form layouts -->
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <!-- Vertical form -->
+                            <div class="card">
+                                <div class="card-header header-elements-inline">
+                                    <h5 class="card-title">sign In</h5>
+                                </div>
+
+                                <div class="card-body">
+                                    <form asp-action="Auth" method="post">
+
+                                        <div class="form-group">
+                                            <label asp-for="Username">Username</label>
+                                            <input type="text" name="UserName" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="Password">Password</label>
+                                            <input type="password" name="Password" class="form-control">
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-primary form-control">Sign In </button>
+                                            </div>
+
+                                            <div class="col-md-6 text-right">
+                                                <a href="#" class="">Forgot Password ?</a>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /vertical form -->
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="alert-success">@(TempData["RegisterMessage"] ??string.Empty)</p>
+                            <!-- Vertical form -->
+                            <div class="card">
+                                <div class="card-header header-elements-inline">
+                                    <h5 class="card-title"> Job Seeker sign Up</h5>
+                                </div>
+
+                                <div class="card-body">
+                                    <form asp-action="SignUp">
+                                        <div class="form-group">
+                                            <label asp-for="Username">Username</label>
+                                            <input type="text" name="Username" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="Password">Password</label>
+                                            <input type="password" name="Password" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="ConfirmPassword">Confirm Password</label>
+                                            <input type="password" name="ConfirmPassword" class="form-control">
+                                        </div>
+
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-primary form-control">Sign Up</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /vertical form -->
+
+                        </div>
+                    </div>
+                    <!-- /form layouts -->
+                </div>
+            </div>
+            <!-- /basic card -->
+
+        </div>
+        <!-- /content area -->
+
+    </div>
+    <!-- /main content -->
+
+</div>
+<!-- /page content -->

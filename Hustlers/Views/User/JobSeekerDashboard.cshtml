@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_JobSeekerLayout";
+}
+
+
+<form action="#" class="mb-5">
+    <div class="row">
+
+        <div class="col-md-3">
+            <select name="JobCategory" class="form-control">
+                <option value="opt1">JOB CATEGORY</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <select name="Province" class="form-control">
+                <option value="opt1">PROVINCE</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Find Jobs</button>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Advance Search </button>
+        </div>
+
+    </div>
+</form>
+
+<partial name="_JobAdvertCard"/>

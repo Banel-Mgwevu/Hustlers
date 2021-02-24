@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Hustlers.Domain.Entities;
 using Hustlers.Domain.Interfaces.Repositories;
@@ -23,6 +24,13 @@ namespace Hustlers.Domain.Services
             this.logger = logger;
         }
 
+        public User AuthUser(User userModel)
+        {
+            var authUser = userRepository.FindByCondition(x => x.Username.Equals(userModel.Username) && x.Password.Equals(userModel.Password));
+            var results = authUser.FirstOrDefault();
+            return results; 
+        }
+
         public User Get(string id)
         {
             var user = new User();
@@ -39,6 +47,34 @@ namespace Hustlers.Domain.Services
             }
 
             return user;
+        }
+
+        public bool isJobSeekerRegistered(User user)
+        {
+            var isRegistered = false;
+
+            try
+            {
+                var tempUser = userRepository.FindByCondition(x => x.Username.Equals(user.Username)).FirstOrDefault();
+
+                if(tempUser != null)
+                { return isRegistered; }
+
+                user.Id = Guid.NewGuid().ToString();
+                user.CreatedDate = DateTime.Now;
+                user.IsActive = true;
+                user.RoleName = "JobSeeker";
+                user.UserId = Guid.NewGuid().ToString();
+                userRepository.Insert(user);
+                logger.LogInformation("User " + user.Username + "registered");
+                isRegistered = true;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+            }
+
+            return isRegistered;
         }
     }
 }

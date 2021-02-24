@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hustlers.Domain.Interfaces.Helpers;
 using Hustlers.Domain.IOC;
+using Hustlers.Helpers;
 using Hustlers.Infrastructure.IOC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +29,9 @@ namespace Hustlers
         {
             services.AddInfrastructure();
             services.AddDomain();
+            //services.AddTransient<ISessionManager, SessionManager>();
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -46,7 +51,7 @@ namespace Hustlers
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -55,7 +60,7 @@ namespace Hustlers
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

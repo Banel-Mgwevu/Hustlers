@@ -9,10 +9,11 @@ namespace Hustlers.Controllers
 {
     public class AdminController : Controller
     {
+        public AdminController(){ }
         // GET: AdminController
         public ActionResult Index()
         {
-            return View();
+            return View("Dashboard");
         }
 
         // GET: AdminController/Details/5

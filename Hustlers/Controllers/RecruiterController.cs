@@ -12,7 +12,7 @@ namespace Hustlers.Controllers
         // GET: RecruiterController
         public ActionResult Index()
         {
-            return View();
+            return View("Dashboard");
         }
 
         // GET: RecruiterController/Details/5
@@ -32,7 +32,7 @@ namespace Hustlers.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
-            try
+            try 
             {
                 return RedirectToAction(nameof(Index));
             }

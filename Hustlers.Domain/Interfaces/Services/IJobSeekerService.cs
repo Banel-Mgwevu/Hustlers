@@ -4,8 +4,6 @@ namespace Hustlers.Domain.Interfaces.Services
 {
     public interface IJobSeekerService
     {
-
-
-    
+        JobSeeker Get(string id);
     }
 }
