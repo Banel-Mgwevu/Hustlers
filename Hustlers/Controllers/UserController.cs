@@ -40,12 +40,10 @@ namespace Hustlers.Controllers
         {
             //Return a relevant admin page based on the type of user logging in
             //Do not forget to encrypt a password
-            userModel.Username = "admin";
-            userModel.Password = "123";
             var controller = "";
 
             var authUser = _userService.AuthUser(userModel);
-            HttpContext.Session.Clear();
+            //HttpContext.Session.Clear();
             if(authUser != null)
             {
                 //Set a session
@@ -81,16 +79,18 @@ namespace Hustlers.Controllers
         [HttpPost]
         public ActionResult SignUp(User userModel)
         {
-            bool isJobSeekerRegistered = _userService.isJobSeekerRegistered(userModel);
+            
 
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                bool isJobSeekerRegistered = _userService.isJobSeekerRegistered(userModel);
+
+                if (isJobSeekerRegistered)
+                {
+                    return RedirectToAction(nameof(JobSeekerRegistered));
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(nameof(Index));
         }
 
         public ActionResult JobSeekerRegistered()
