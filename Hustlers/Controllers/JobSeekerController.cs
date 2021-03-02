@@ -10,11 +10,16 @@ namespace Hustlers.Controllers
 {
     public class JobSeekerController : Controller
     {
-        IUserService _userService;
+        private readonly IJobAdvertService _jobSeekerService;
 
-        public JobSeekerController(IUserService userService)
+        public JobSeekerController(IUserService userService, IJobSeekerService jobSeekerService)
         {
-            _userService = userService;
+            //_userService = userService;
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
         }
 
         // GET: JobSeekerController

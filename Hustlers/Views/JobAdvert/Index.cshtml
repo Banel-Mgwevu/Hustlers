@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<h5 class="page-title"> Create Job Advert</h5>
+<form>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="Introduction">Introduction</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Qualifications">Qualifications</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Experience">Experience</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="Remuneration">Remuneration</label>
+            <input type="text" name="Remuneration" class="form-control" id="validationDefault01" value="R10 000 to R20 000" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="ExperienceLevel">ExperienceLevel</label>
+            <select name="ExperienceLevel" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="JobCategory">JobCategory</label>
+            <select name="JobCategory" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="col-md-4 mb-3">
+
+            <label for="JobType">JobType</label>
+            <select name="JobType" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="Company">Company</label>
+            <select name="Company" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="Recruiter">Recruiter</label>
+            <select name="Recruiter" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="StartDate">StartDate</label>
+
+            <input type="date" name="StartDate" class="form-control" id="" value="2014-08-03" min="2021-02-27" max="2022-01-01">
+
+        </div>
+
+        <div class="col-md-4">
+            <label for="EndDate">EndDate</label>
+
+            <input type="date" name="EndDate" class="form-control" id="" min="2021-02-27" max="2022-01-01" value="2021-02-27">
+
+        </div>
+
+        <div class="col-md-4 mt-4">
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+
+    </div>
+
+</form>

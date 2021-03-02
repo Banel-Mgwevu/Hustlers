@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model User;
+
 @{
     Layout = "_MasterLayout";
 }
@@ -11,7 +12,7 @@
 
     <!-- Main content -->
     <div class="content-wrapper">
-
+        
         <!-- Content area -->
         <div class="content">
             <h1 class="page-title text-center">Welcome To Hustlers Recruitment</h1>
@@ -39,12 +40,12 @@
 
                                         <div class="form-group">
                                             <label asp-for="Username">Username</label>
-                                            <input type="text" name="UserName" class="form-control">
+                                            <input type="text" name="UserName" class="form-control" value="admin">
                                         </div>
 
                                         <div class="form-group">
                                             <label asp-for="Password">Password</label>
-                                            <input type="password" name="Password" class="form-control">
+                                            <input type="password" name="Password" class="form-control" value="123">
                                         </div>
 
                                         <div class="row">
@@ -78,7 +79,7 @@
                                         <div asp-validation-summary="All" class="alert-danger"></div>
                                         <div class="form-group">
                                             <label asp-for="Username">Username</label>
-                                            <input type="text" name="Username" class="form-control">
+                                            <input type="text" name="Username" class="form-control" >
                                         </div>
 
                                         <div class="form-group">

@@ -21,9 +21,9 @@
             <a href="#" class="nav-link"><i class="icon-unfold"></i> <span>Job Advert</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Job Advert">
-                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">Applied Jobs</a></li>
+                <li class="nav-item"><a asp-action="Index" asp-controller="JobAdvert" class="nav-link">Create</a></li>
+                <li class="nav-item"><a asp-action="JobAdvertList" asp-controller="JobAdvert" class="nav-link">View</a></li>
+                <li class="nav-item"><a asp-action="RecruiterViewAppliedJobs" asp-controller="JobAdvert" class="nav-link">Applied Jobs</a></li>
             </ul>
         </li>
 

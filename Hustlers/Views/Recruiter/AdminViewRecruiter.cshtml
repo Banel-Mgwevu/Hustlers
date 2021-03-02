@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "AdminViewRecruiter";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<form action="#" class="mb-5">
+    <div class="row">
+
+        <div class="col-md-6">
+            <select name="Company" class="form-control">
+                <option value="opt1">Unique Geeks Technologies</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Search</button>
+        </div>
+
+    </div>
+</form>
+
+<!-- Basic table -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Recruiters</h5>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>Company</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4</td>
+                    <td>Franklin</td>
+                    <td>Morrison</td>
+                    <td>Frank</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Recruiter" asp-route-id="2"> Edit </a>
+                        <a href="#" class="btn btn-danger"> Delete </a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /basic table -->

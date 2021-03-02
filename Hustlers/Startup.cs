@@ -31,7 +31,8 @@ namespace Hustlers
             services.AddDomain();
             //services.AddTransient<ISessionManager, SessionManager>();
             services.AddHttpContextAccessor();
-            services.AddSession();
+            services.AddSession(options =>
+                options.IdleTimeout = TimeSpan.FromMinutes(30));
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

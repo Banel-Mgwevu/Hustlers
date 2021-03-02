@@ -18,12 +18,25 @@
             <div class="card-body">
                 <div class="card-subtitle mb-2 text-muted">Unique Geeks Technologies (Pty) Ltd</div>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <span class="font-weight-bold">Location:</span><span class="mr-2">Venda</span>
-                <span class="font-weight-bold">Work Type:</span><span class="mr-2">Full Time</span>
-                <span class="font-weight-bold">Statue:</span><span class="mr-3">Contract</span>
-                <a href="#" class="card-link">View</a>
-                <a href="#" class="card-link">Edit</a>
-                <a href="#" class="card-link">Delete</a>
+                <i class="icon-location3 mr-2"></i><span class="mr-2">Venda</span>
+                <i class="icon-watch2 mr-2"></i><span class="mr-2">Full Time</span>
+                <i class="icon-wallet mr-2"></i><span class="mr-2">Contract</span>
+                <i class="icon-calendar mr-2"></i><span class="mr-2">2020-02-14</span>
+                <div class="row">
+                    <!--Remove this section to JobSeekers. Its for admin and Recruiter-->
+                    <div class="col-sm mt-2">
+                        <a asp-action="RecruiterAppliedJobsDetails" asp-controller="JobAdvert" asp-route-id="1" class="btn btn-success auto">View</a>
+                    </div>
+
+                    <div class="col-sm mt-2">
+                        <a asp-action="Edit" asp-controller="JobAdvert" asp-route-id="1" class="btn btn-primary auto">Edit</a>
+                    </div>
+
+                    <div class="col-sm mt-2">
+                        <a asp-action="JobSeekerJobDetails" asp-controller="JobAdvert" asp-route-id="1"class="btn btn-danger auto">Delete</a>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- /basic card -->

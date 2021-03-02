@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "JobAdvertList";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<form>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="JobCategory">Job Category</label>
+            <select name="JobCategory" class="form-control">
+                <option value="opt1">Finance</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="JobType">Job Type</label>
+            <select name="JobType" class="form-control">
+                <option value="opt1">Contract</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Company">Company</label>
+            <select name="Company" class="form-control" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="StartDate">Date From</label>
+
+            <input type="date" name="StartDate" class="form-control" id="" value="2014-08-03" min="2021-02-27" max="2022-01-01">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="EndDate">Date To</label>
+
+            <input type="date" name="EndDate" class="form-control" id="" min="2021-02-27" max="2022-01-01" value="2021-02-27">
+
+        </div>
+
+        <div class="col-md-4 mt-4">
+
+            <button type="submit" class="btn btn-primary form-control">Search</button>
+        </div>
+    </div>
+
+</form>
+
+<partial name="_JobAdvertCard">

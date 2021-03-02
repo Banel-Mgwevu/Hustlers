@@ -1,0 +1,61 @@
+﻿
+@model CreateCompanyViewModel;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<form asp-action="Create" asp-controller="Company" method="POST">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="CompanyName">Company Name</label>
+            <input type="text" name="CompanyName" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Telephone">Telephone</label>
+            <input type="text" name="Telephone" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="ProvinceId">Province</label>
+            <select ap-for="ProvinceId" asp-items="@(new SelectList(Model.Provinces,"Id","Name"))" name="ProvinceId" class="form-control">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+
+            <label for="CityId">City</label>
+            <select asp-for="CityId" asp-items="@(new SelectList(Model.Cities,"Id","Name"))" name="CityId" class="form-control">
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="StreetNumber">Street Number</label>
+            <input type="text" name="StreetNumber" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="StreetName">Street Name</label>
+            <input type="text" name="StreetName" class="form-control">
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="BuildingNumber">Building Number</label>
+            <input type="text" name="BuildingNumber" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="col-md-4 text">
+            <button class="btn btn-primary form-control" type="submit">Submit</button>
+        </div>
+
+    </div>
+
+</form>

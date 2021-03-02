@@ -22,8 +22,8 @@
             <a href="#" class="nav-link"><i class="icon-stack"></i> <span>Recruiter</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Recruiter">
-                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
+                <li class="nav-item"><a asp-action="Create" asp-controller="Recruiter" class="nav-link">Create</a></li>
+                <li class="nav-item"><a asp-action="AdminViewRecruiter" asp-controller="Recruiter" class="nav-link">View</a></li>
             </ul>
         </li>
 
@@ -31,21 +31,28 @@
             <a href="#" class="nav-link"><i class="icon-unfold"></i> <span>Job Advert</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Job Advert">
-                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">Configurations</a></li>
+                <li class="nav-item"><a asp-action="Index" asp-controller="JobAdvert" class="nav-link">Create</a></li>
+                <li class="nav-item"><a asp-action="JobAdvertList" asp-controller="JobAdvert" class="nav-link">View</a></li>
             </ul>
         </li>
+
+        <!-- <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+         <a href="#" class="nav-link"><i class="icon-people"></i> <span>Job Seeker</span></a>
+
+         <ul class="nav nav-group-sub" data-submenu-title="Job Seeker">
+             <li class="nav-item"><a asp-action="AdminCreate" asp-controller="Recruiter" class="nav-link">Create</a></li>
+             <li class="nav-item"><a asp-action="AdminViewRecruiter" asp-controller="Recruiter" class="nav-link">View</a></li>
+         </ul>
+     </li> -->
 
         <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-            <a href="#" class="nav-link"><i class="icon-people"></i> <span>Job Seeker</span></a>
+            <a href="#" class="nav-link"><i class="icon-home"></i> <span>Company</span></a>
 
-            <ul class="nav nav-group-sub" data-submenu-title="Job Seeker">
-                <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Create</a></li>
-                <li class="nav-item"><a href="../seed/sidebar_main.html" class="nav-link active">View</a></li>
+            <ul class="nav nav-group-sub" data-submenu-title="Company">
+                <li class="nav-item"><a asp-action="Create" asp-controller="Company" class="nav-link">Create</a></li>
+                <li class="nav-item"><a asp-action="Index" asp-controller="Company" class="nav-link">View</a></li>
             </ul>
         </li>
-
         <!-- /main -->
 
     </ul>

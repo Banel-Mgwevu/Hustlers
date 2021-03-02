@@ -1,0 +1,85 @@
+﻿@model EditCompanyViewModel;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+
+    IList<SelectListItem> companyProvinces = new List<SelectListItem>();
+    IList<SelectListItem> companyCities = new List<SelectListItem>();
+
+    foreach (var item in Model.Cities)
+    {
+        var isCompanyCity = false;
+        var isCompanyProvince = false;
+
+        if(item.Id.Equals(Model.CityId))
+        {
+            isCompanyCity = true;
+        }
+
+        companyCities.Add(new SelectListItem(item.Name,item.Id,isCompanyCity));
+    }
+
+    foreach (var item in Model.Provinces)
+    {
+        var isCompanyProvince = false;
+
+        companyProvinces.Add(new SelectListItem(item.Name, item.Id, item.Id.Equals(Model.ProvinceId) ? true : false));
+    }
+}
+
+<form asp-action="EditCompany" asp-controller="Company" asp-route-id ="@Model.CompanyId" method="POST">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="CompanyName">Company Name</label>
+            <input type="text" name="CompanyName" class="form-control" value="@Model.CompanyName">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Telephone">Telephone</label>
+            <input type="text" name="Telephone" class="form-control" value="@Model.Telephone">
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="ProvinceId">Province</label>
+            <select ap-for="ProvinceId" asp-items="@companyProvinces" name="ProvinceId" class="form-control">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+
+            <label for="CityId">City</label>
+            <select asp-for="CityId" asp-items="@companyCities" name="CityId" class="form-control">
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="StreetNumber">Street Number</label>
+            <input type="text" name="StreetNumber" class="form-control" value="@Model.StreetNumber">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="StreetName">Street Name</label>
+            <input type="text" name="StreetName" class="form-control" value="@Model.StreetName">
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="BuildingNumber">Building Number</label>
+            <input type="text" name="BuildingNumber" class="form-control" value="@Model.BuildingNumber">
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="col-md-4 text">
+            <button class="btn btn-primary form-control" type="submit">Update</button>
+        </div>
+
+    </div>
+
+</form>
+

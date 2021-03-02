@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Edit Recruiter";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<form>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="FirstName">First name</label>
+            <input type="text" name="FirstName" class="form-control" id="validationDefault01" value="Mark" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="LastName">Last name</label>
+            <input type="text" name="LastName" class="form-control" id="validationDefault02" value="Otto" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Username">Username</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2"></span>
+                </div>
+                <input disabled type="text" name="Username" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="Phone">Phone</label>
+            <input type="Phone" name="Phone" class="form-control" id="validationDefault01" value="Mark" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Email">Email</label>
+            <input type="email" name="Email" class="form-control" id="validationDefault02" value="Otto" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="Company">Company</label>
+            <select name="Company" class="custom-select" id="validationDefault04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+                <option>...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="col-md-4">
+            <button class="btn btn-primary" type="submit">Update</button>
+        </div>
+
+    </div>
+
+</form>
+

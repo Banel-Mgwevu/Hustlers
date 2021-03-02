@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "AdminRecruiterViewAppliedJobs";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<!-- Basic table -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Job Applications</h5>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>ApplicantName</th>
+                    <th>Contacts</th><!--email+phone-->
+                    <th>Job</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4</td>
+                    <td>Franklin</td>
+                    <td>Morrison</td>
+                    <td>Frank</td>
+                    <td>Frank</td>
+                    <td>
+                        <a asp-action="RecruiterAppliedJobsDetails" asp-controller="JobAdvert" asp-route-id ="1" class="btn btn-primary"> View </a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /basic table -->

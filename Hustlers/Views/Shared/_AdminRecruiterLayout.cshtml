@@ -2,6 +2,7 @@
 @{
     Layout = "_MasterLayout";
     var UserRole = HttpContextAccessor.HttpContext.Session.GetString("Role");
+    var sessionValues = HttpContextAccessor.HttpContext.Session;
 }
 
 <!-- Page header -->
@@ -46,14 +47,14 @@
                 <li class="nav-item dropdown dropdown-user">
                     <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
                         <img src="../../../../global_assets/images/image.png" class="rounded-circle mr-2" height="34" alt="">
-                        <span>Victoria</span>
+                        <span>@sessionValues.GetString("Username");</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
                         <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Change Password</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                        <a asp-action="SignOut" asp-controller="User" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
                     </div>
                 </li>
             </ul>
@@ -119,14 +120,14 @@
                 </div>
                 <!-- /header -->
                 <!-- Main navigation -->
-                    @if (UserRole.Equals("Admin"))
-                    {
-                        <partial name="AdminSideNavMenu" />
-                    }
-                    else
-                    {
-                        <partial name="_RecruiterSideNavMenu" />
-                    }
+                @if (UserRole.Contains("Admin"))
+                {
+                    <partial name="_AdminSideNavMenu" />
+                }
+                else
+                {
+                    <partial name="_RecruiterSideNavMenu" />
+                }
                 <!-- /main navigation -->
 
             </div>
@@ -141,7 +142,7 @@
         <!-- Content area -->
         <div class="content">
 
-            @RenderBody();
+            @RenderBody()
 
         </div>
         <!-- /content area -->

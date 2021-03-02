@@ -18,6 +18,11 @@ namespace Hustlers.Domain.IOC
             service.AddTransient<IJobSeekerService, JobSeekerService>();
             service.AddTransient<IUserService, UserService>();
             service.AddTransient<IRecruiterService, RecruiterService>();
+            service.AddTransient<IAddressService, AddressService>();
+            service.AddTransient<ICompanyService, CompanyService>();
+            service.AddTransient<IJobAdvertService, JobAdvertService>();
+            service.AddTransient<IProvinceService, ProvinceService>();
+            service.AddTransient<ICityService, CityService>();
             return service;
         }
 

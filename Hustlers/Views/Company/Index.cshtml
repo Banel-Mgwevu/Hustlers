@@ -1,0 +1,50 @@
+﻿@model List<ListCompanyViewModel>;
+@{
+    ViewData["Title"] = "View Company";
+    Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
+}
+
+<!-- Basic table -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Company</h5>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Telephone</th>
+                    <th>City</th>
+                    <th>Province</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            @{ 
+                    foreach (var item in Model)
+                    {
+                        int index = 0;
+
+                    <tr>
+                        <td>@{index++;}</td>
+                        <td>@item.CompanyName</td>
+                        <td>@item.Telephone</td>
+                        <td>@item.City</td>
+                        <td>@item.Province</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Company" asp-route-id ="@item.CompanyId" class="btn btn-primary"> Edit </a>
+                            <a href="#" class="btn btn-danger"> Delete </a>
+                        </td>
+                    </tr>
+                }
+            }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /basic table -->

@@ -7,7 +7,9 @@ using System.Text;
 namespace Hustlers.Domain.Entities
 {
     public class JobAdvert : HustlersEntity
-    {
+    {   /**
+         * Remember to add Statue for 
+         * */
         public string JobTypeId { set; get; } //Contract, Permenant , part-time
         public string Caption { set; get; }
         public string Introduction { set; get; }

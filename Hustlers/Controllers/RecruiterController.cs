@@ -2,17 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hustlers.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Hustlers.Controllers
 {
     public class RecruiterController : Controller
     {
+        private readonly IRecruiterService _recruiterService;
+        private ILogger<RecruiterController> _logger;
+        public RecruiterController(IRecruiterService recruiterService, ILogger<RecruiterController> logger)
+        {
+            _recruiterService = recruiterService;
+            _logger = logger;
+        }
         // GET: RecruiterController
         public ActionResult Index()
         {
+            //Get User using id saved on a session when they login
+
             return View("Dashboard");
+        }        
+        
+        public ActionResult AdminViewRecruiter()
+        {
+            //Get User using id saved on a session when they login
+
+            return View("AdminViewRecruiter");
         }
 
         // GET: RecruiterController/Details/5
@@ -24,7 +42,7 @@ namespace Hustlers.Controllers
         // GET: RecruiterController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("AdminCreate");
         }
 
         // POST: RecruiterController/Create
@@ -45,7 +63,7 @@ namespace Hustlers.Controllers
         // GET: RecruiterController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View("AdminEdit");
         }
 
         // POST: RecruiterController/Edit/5

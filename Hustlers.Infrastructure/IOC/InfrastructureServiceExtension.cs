@@ -50,6 +50,7 @@ namespace Hustlers.Infrastructure.IOC
             service.AddTransient<IRepository<Skill>, Repository<Skill>>();
             service.AddTransient<IRepository<WorkExperience>, Repository<WorkExperience>>();
             service.AddTransient<IPasswordEncryption, PasswordEncryption>();
+            service.AddTransient<ICompanyRepository, CompanyRepository>();
             return service;
         }
     }

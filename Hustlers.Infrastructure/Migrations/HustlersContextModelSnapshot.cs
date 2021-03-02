@@ -22,8 +22,8 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<int>("BuildingNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("BuildingNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime(6)");
@@ -34,8 +34,8 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("StreetName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("StreetNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("StreetNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime(6)");
@@ -51,6 +51,9 @@ namespace Hustlers.Infrastructure.Migrations
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("AttachmentName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AttachmentType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("AttachmentUrl")
@@ -78,9 +81,6 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("ProvinceId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime(6)");
 
@@ -97,6 +97,9 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("AddressId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("CityId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("CompanyName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -105,6 +108,9 @@ namespace Hustlers.Infrastructure.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ProvinceId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telephone")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -217,8 +223,8 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime?>("Description")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
@@ -344,6 +350,12 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
+                    b.Property<string>("AddressId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("CityId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
@@ -354,6 +366,9 @@ namespace Hustlers.Infrastructure.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("EthnicityId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("GenderId")
@@ -371,10 +386,16 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<string>("IsProfileVisible")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("PersonalProfile")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ProvinceId")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TitleId")
@@ -592,9 +613,6 @@ namespace Hustlers.Infrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("JobSeekerId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -602,8 +620,6 @@ namespace Hustlers.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("JobSeekerId");
 
                     b.ToTable("Qualification");
                 });
@@ -815,13 +831,6 @@ namespace Hustlers.Infrastructure.Migrations
                 {
                     b.HasOne("Hustlers.Domain.Entities.JobSeeker", null)
                         .WithMany("JobSeekerSkills")
-                        .HasForeignKey("JobSeekerId");
-                });
-
-            modelBuilder.Entity("Hustlers.Domain.Entities.Qualification", b =>
-                {
-                    b.HasOne("Hustlers.Domain.Entities.JobSeeker", null)
-                        .WithMany("Qualification")
                         .HasForeignKey("JobSeekerId");
                 });
 
