@@ -115,5 +115,10 @@ namespace Hustlers.Domain.Services
             _companyRepository.Update(companyToUpdate);
 
         }
+
+        public void UpdateById(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

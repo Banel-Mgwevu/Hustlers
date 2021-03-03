@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hustlers.Domain.Entities;
 using Hustlers.Domain.Interfaces.Services;
+using Hustlers.Domain.Models.RecruiterViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,10 +14,13 @@ namespace Hustlers.Controllers
     public class RecruiterController : Controller
     {
         private readonly IRecruiterService _recruiterService;
+        private readonly ICompanyService _companyService;
         private ILogger<RecruiterController> _logger;
-        public RecruiterController(IRecruiterService recruiterService, ILogger<RecruiterController> logger)
+        public RecruiterController(IRecruiterService recruiterService, ILogger<RecruiterController> logger,
+            ICompanyService companyService)
         {
             _recruiterService = recruiterService;
+            _companyService = companyService;
             _logger = logger;
         }
         // GET: RecruiterController
@@ -26,11 +31,24 @@ namespace Hustlers.Controllers
             return View("Dashboard");
         }        
         
-        public ActionResult AdminViewRecruiter()
+        [HttpGet]
+        public ActionResult AdminViewRecruiter(string CompanyId)
         {
             //Get User using id saved on a session when they login
 
-            return View("AdminViewRecruiter");
+            //Load Companies
+
+            var companies = _companyService.GetAll();
+            //companies.Insert(0,new Company {CompanyName = "All",Id = "0" });
+            var recruiters = _recruiterService.GetAll(CompanyId);
+
+            SearchFilterAndDataModel searchFilterAndDataModel = new SearchFilterAndDataModel 
+            {
+               ViewRecruiterViewModel = (List<ViewRecruiterViewModel>)recruiters,
+               Companies = (List<Company>)companies
+
+            };
+            return View("AdminViewRecruiter",searchFilterAndDataModel);
         }
 
         // GET: RecruiterController/Details/5
@@ -42,42 +60,73 @@ namespace Hustlers.Controllers
         // GET: RecruiterController/Create
         public ActionResult Create()
         {
-            return View("AdminCreate");
+            CreateRecruiterViewModel createRecruiterViewModel = new CreateRecruiterViewModel
+            {
+                Companies = _companyService.GetAll()
+            };
+
+            return View("AdminCreate",createRecruiterViewModel);
         }
 
         // POST: RecruiterController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateRecruiterViewModel createRecruiterViewModel)
         {
-            try 
+            CreateRecruiterViewModel createRecruiterModel = new CreateRecruiterViewModel
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+                Companies = _companyService.GetAll(),
+            };
+
+            if (ModelState.IsValid)
             {
-                return View();
+                _recruiterService.Create(createRecruiterViewModel);
+                return RedirectToAction("JobSeekerRegistered", "User");
             }
+
+            return View("AdminCreate",createRecruiterModel);
         }
 
         // GET: RecruiterController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View("AdminEdit");
+
+            return View("AdminEdit",PrepareRecruiterEdit(id));
         }
 
+        private EditRecruiterViewModel PrepareRecruiterEdit(string id)
+        {
+            var recruiter = _recruiterService.Get(id);
+
+            var editRecruiterViewModel = new EditRecruiterViewModel
+            {
+                FirstName = recruiter.FirstName,
+                LastName = recruiter.LastName,
+                Email = recruiter.Email,
+                Companies = _companyService.GetAll(),
+                CompanyId = recruiter.CompanyId,
+                Phone = recruiter.Phone,
+                Username = "Call User Service",
+                RecruiterId = id
+            };
+
+            return editRecruiterViewModel;
+        }
         // POST: RecruiterController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(EditRecruiterViewModel editRecruiterViewModel, string id)
         {
-            try
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                editRecruiterViewModel.RecruiterId = id;
+                _recruiterService.Update(editRecruiterViewModel);
+
+                return RedirectToAction("AdminViewRecruiter");
             }
-            catch
+            else
             {
-                return View();
+                return View("AdminEdit",PrepareRecruiterEdit(id));
             }
         }
 

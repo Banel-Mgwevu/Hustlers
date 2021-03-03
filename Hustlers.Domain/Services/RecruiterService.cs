@@ -5,6 +5,7 @@ using Hustlers.Domain.Interfaces.Repositories;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using Hustlers.Domain.Models.RecruiterViewModel;
 
 namespace Hustlers.Domain.Services
 {
@@ -13,28 +14,49 @@ namespace Hustlers.Domain.Services
         IRepository<User> userRepository;
         IRepository<Recruiter> recruiterRepository;
         IRepository<JobSeeker> jobSeekerRepository;
+        private readonly IUserService _userService;
+        private readonly ICompanyService _companyService;
 
         ILogger<RecruiterService> logger;
 
         public RecruiterService(ILogger<RecruiterService> logger, IRepository<User> userRepository, IRepository<Recruiter> recruiterRepository,
-            IRepository<JobSeeker> jobSeekerRepository)
+            IRepository<JobSeeker> jobSeekerRepository,IUserService userService, ICompanyService companyService)
         {
             this.recruiterRepository = recruiterRepository;
+            _userService = userService;
+            _companyService = companyService;
             this.logger = logger;
         }
-        public void Create(Recruiter recruiter)
+        public bool Create(CreateRecruiterViewModel createRecruiterViewModel)
         {
-            recruiter.Id = Guid.NewGuid().ToString();
+            var recruiterId = Guid.NewGuid().ToString();
 
-            try
+            //Create User first
+
+            if (_userService.IsUserRegistered(new User
             {
-                this.recruiterRepository.Insert(recruiter);
-                logger.LogInformation("Recruiter " + recruiter.Id + "registered");
-            }
-            catch (Exception ex)
+                Password = createRecruiterViewModel.Password,
+                Username = createRecruiterViewModel.Username,
+                UserId = recruiterId,
+                RoleName = "Recruiter"
+            }))
             {
-                logger.LogError(ex, ex.Message);
+                recruiterRepository.Insert(new Recruiter
+                {
+                    Id = recruiterId,
+                    LastName = createRecruiterViewModel.LastName,
+                    FirstName = createRecruiterViewModel.FirstName,
+                    Phone = createRecruiterViewModel.Phone,
+                    Email = createRecruiterViewModel.Email,
+                    CompanyId = createRecruiterViewModel.CompanyId,
+                    IsActive = true,
+                    DateCreated = DateTime.Now
+                });
+
+                return true;
             }
+
+            return false;
         }
 
         public bool Delete(string id)
@@ -62,30 +84,66 @@ namespace Hustlers.Domain.Services
         }
 
         //Admin
-        public IList<Recruiter> GetAll()
+        public IList<ViewRecruiterViewModel> GetAll(string companyId = null)
         {
-            return recruiterRepository.Get();
+            //var recruiter = recruiterRepository.Get();
+            var recruiterListResult = new List<ViewRecruiterViewModel>();
+            
+            if (String.IsNullOrEmpty(companyId))
+            {
+                var recruiterList = recruiterRepository.Get();
+                
+                foreach (var item in recruiterList)
+                {
+                    recruiterListResult.Add(new ViewRecruiterViewModel { 
+                        FullName = item.FirstName +" "+item.LastName,
+                        Username = _userService.GetByUserId(item.Id).Username,
+                        //Get company id from recruiter then get company then get company name
+                        CompanyName = _companyService.Get(item.CompanyId).CompanyName,
+                        RecruiterId = item.Id
+
+                    });
+                }
+                
+            }
+            else
+            {
+                var recruiters = recruiterRepository.FindByCondition(c => c.IsActive == true && c.CompanyId.Equals(companyId));
+                var company = _companyService.Get(companyId);
+
+                foreach (var item in recruiters)
+                {
+                    recruiterListResult.Add(new ViewRecruiterViewModel
+                    {
+                        FullName = item.FirstName + " " + item.LastName,
+                        Username = _userService.GetByUserId(item.Id).Username,
+                        CompanyName = _companyService.Get(companyId).CompanyName,
+                        RecruiterId = item.Id
+
+                    });
+                }
+            }
+            return recruiterListResult;
         }
+
+
         //Admin
         public IQueryable<Recruiter> GetByCompanyId(string companyId)
         {
             return recruiterRepository.FindByCondition(x => x.CompanyId.Equals(companyId));
         }
 
-        public void Update(Recruiter recruiter)
+        public void Update(EditRecruiterViewModel editRecruiterViewModel)
         {
-            try
-            {
-                var modelToUpdate = recruiterRepository.Get(recruiter.Id);
-                recruiterRepository.Update(modelToUpdate);
-                logger.LogInformation("Recruiter " + recruiter.Id + "updated");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, ex.Message);
-            }
+            var recruiter = recruiterRepository.Get(editRecruiterViewModel.RecruiterId);
+            recruiter.Id = editRecruiterViewModel.RecruiterId;
+            recruiter.Email = editRecruiterViewModel.Email;
+            recruiter.Phone = editRecruiterViewModel.Phone;
+            recruiter.FirstName = editRecruiterViewModel.FirstName;
+            recruiter.LastName = editRecruiterViewModel.LastName;
+            recruiter.CompanyId = editRecruiterViewModel.CompanyId;
+
+            recruiterRepository.Update(recruiter);   
         }
-
-
     }
 }

@@ -9,20 +9,12 @@
 
     foreach (var item in Model.Cities)
     {
-        var isCompanyCity = false;
-        var isCompanyProvince = false;
 
-        if(item.Id.Equals(Model.CityId))
-        {
-            isCompanyCity = true;
-        }
-
-        companyCities.Add(new SelectListItem(item.Name,item.Id,isCompanyCity));
+        companyCities.Add(new SelectListItem(item.Name,item.Id, item.Id.Equals(Model.CityId) ? true : false));
     }
 
     foreach (var item in Model.Provinces)
     {
-        var isCompanyProvince = false;
 
         companyProvinces.Add(new SelectListItem(item.Name, item.Id, item.Id.Equals(Model.ProvinceId) ? true : false));
     }

@@ -11,6 +11,7 @@ namespace Hustlers.Domain.Interfaces.Services
     {
         void Create(CreateCompanyViewModel createCompanyViewModel);
         void Update(EditCompanyViewModel editCompanyViewModel);
+        void UpdateById(string id);
         Company Get(string id);
         IList<Company> GetAll();
         IList<Company> GetAllWithRelations();

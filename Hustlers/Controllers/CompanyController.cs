@@ -78,7 +78,7 @@ namespace Hustlers.Controllers
             if (ModelState.IsValid)
                 {
                     _companyService.Create(createCompanyViewModel);
-                    return RedirectToAction("JobSeekerRegistered", "User");
+                    return RedirectToAction(nameof(Index));
                 }
 
             return View(createCompanyModel);

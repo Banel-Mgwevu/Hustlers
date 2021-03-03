@@ -1,15 +1,15 @@
 ﻿
+@model SearchFilterAndDataModel;
 @{
     ViewData["Title"] = "AdminViewRecruiter";
     Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
 }
 
-<form action="#" class="mb-5">
+<form asp-action="AdminViewRecruiter" asp-controller="Recruiter" method="get" class="mb-5">
     <div class="row">
 
         <div class="col-md-6">
-            <select name="Company" class="form-control">
-                <option value="opt1">Unique Geeks Technologies</option>
+            <select asp-items="@(new SelectList(Model.Companies,"Id","CompanyName"))" asp-for="ViewRecruiterViewModel.FirstOrDefault().CompanyId" name="CompanyId" class="form-control">
             </select>
         </div>
 
@@ -38,17 +38,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>4</td>
-                    <td>Franklin</td>
-                    <td>Morrison</td>
-                    <td>Frank</td>
-                    <td>
-                        <a asp-action="Edit" asp-controller="Recruiter" asp-route-id="2"> Edit </a>
-                        <a href="#" class="btn btn-danger"> Delete </a>
-                    </td>
-                </tr>
+            @{ 
+                foreach (var item in Model.ViewRecruiterViewModel)
+                {
 
+                    int count = 0;
+                    count = count + 1;
+
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Username</td>
+                        <td>@item.CompanyName</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Recruiter" asp-route-id="@item.RecruiterId" class="btn btn-primary"> Edit </a>
+                            <a asp-action="Edit" asp-controller="Recruiter" asp-route-id="@item.RecruiterId" class="btn btn-danger"> Delete </a>
+                        </td>
+                    </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>

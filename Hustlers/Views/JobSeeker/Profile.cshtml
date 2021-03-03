@@ -4,3 +4,321 @@
 @{
     Layout = "_JobSeekerLayout";
 }
+
+<!-- Introduction -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">Personal Details</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form action="">
+            <div class="form-row">
+                <div class="col-md-2 mb-3">
+                    <label for="Title">Title</label>
+                    <select name="Title" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="FirstName">First name</label>
+                    <input type="text" name="FirstName" class="form-control" id="validationDefault01" value="Mark" required>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="LastName">Last name</label>
+                    <input type="text" name="LastName" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="IdNumber">Id Number</label>
+                    <input type="text" name="IdNumber" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="Gender">Gender</label>
+                    <select name="Gender" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <label for="Email">Email</label>
+                    <input type="Email" name="Email" class="form-control" id="validationDefault01" value="Mark" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="Email">Phone</label>
+                    <input type="Phone" name="Phone" class="form-control" id="validationDefault01" value="Mark" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="Ethnicity">Ethnicity</label>
+                    <select name="Ethnicity" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+
+                    <label for="Province">Province</label>
+                    <select name="Province" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Joburg</option>
+                        <option>Polokwane</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+
+                    <label for="City">City</label>
+                    <select name="City" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Joburg</option>
+                        <option>Polokwane</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                    <label for="StreetNumber">Street Number</label>
+                    <input type="text" name="StreetNumber" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="StreetName">Street Name</label>
+                    <input type="text" name="StreetName" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                    <label for="BuildingNumber">Building Number</label>
+                    <input type="text" name="BuildingNumber" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+            </div>
+
+            <label for="PersonalProfile">Personal Profile</label>
+            <textarea name="PersonalProfile" class="form-control" id="exampleFormControlTextarea1" rows="5">
+
+							</textarea>
+
+            <div class="col-md-3 mt-2">
+                <button class="btn btn-primary form-control" type="submit">Update</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!-- /Introduction-->
+<!-- Experience -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">Work Experience</h5>
+        <div class="header-elements">
+            <a href="#" class="btn btn-primary mr-1">Add New</a>
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form action="">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="JobTitle">JobTitle</label>
+                    <input type="text" name="JobTitle" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="CompanyName">Company Name</label>
+                    <input type="text" name="CompanyName" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="StartDate">Date From</label>
+
+                    <input type="date" name="StartDate" class="form-control" id="" value="2014-08-03" min="2021-02-27" max="2022-01-01">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="EndDate">Date To</label>
+
+                    <input type="date" name="EndDate" class="form-control" id="" min="1999-02-27" max="2022-01-01" value="2021-02-27">
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="JobCategory">Job Category</label>
+                    <input type="text" name="JobCategory" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-3 mt-2">
+                    <button class="btn btn-primary form-control" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- /Experience-->
+<!-- Education -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">Education</h5>
+        <div class="header-elements">
+            <a href="#" class="btn btn-primary mr-1">Add New</a>
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form action="">
+            <div class="form-row">
+                <div class="col-md-3">
+                    <label for="GraduationYear">Date From</label>
+
+                    <input type="date" name="GraduationYear" class="form-control" id="" value="2014-08-03" min="2021-02-27" max="2022-01-01">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Insitution">Institution</label>
+
+                    <input type="text" name="Institution" class="form-control" id="" min="1999-02-27" max="2022-01-01" value="2021-02-27">
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="FieldOfStudy">Field Of Study</label>
+                    <input type="text" name="FieldOfStudy" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+
+                <div class="col-md-4">
+
+                    <label for="Qualification">Qualification</label>
+                    <select name="Qualification" class="form-control" id="validationDefault04" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Joburg</option>
+                        <option>Polokwane</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mt-4">
+                    <button class="btn btn-primary form-control" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- /Education-->
+<!-- Skills -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">Skills</h5>
+        <div class="header-elements">
+            <a href="#" class="btn btn-primary mr-1">Add New</a>
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form action="">
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <label for="Skill">Java</label>
+
+                    <input type="text" name="Institution" class="form-control" id="" min="1999-02-27" max="2022-01-01" value="2021-02-27">
+
+                </div>
+
+                <div class="col-sm-auto">
+                    <a href="#" class="mt-4 btn btn-primary form-control">Update</a>
+                </div>
+                <div class="col-sm-auto">
+                    <a href="#" class="mt-4 btn btn-danger form-control">Remove</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- /Skills-->
+<!-- Language -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">languages</h5>
+        <div class="header-elements">
+            <a href="#" class="btn btn-primary mr-1">Add New</a>
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form action="">
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <label for="languages">Zulu</label>
+
+                    <input type="text" name="languages" class="form-control" id="" min="1999-02-27" max="2022-01-01" value="2021-02-27">
+
+                </div>
+
+                <div class="col-sm-auto">
+                    <a href="#" class="mt-4 btn btn-primary form-control">Update</a>
+                </div>
+                <div class="col-sm-auto">
+                    <a href="#" class="mt-4 btn btn-danger form-control">Remove</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- /Language-->
+<!-- Attachements -->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold">Attachements</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <h6 class="font-weight-bold">
+            CV</h6>
+            <p>Link to view/download</p>
+            <h6 class="font-weight-bold">
+                Academic Record</h5>
+                <p>Link to view/download</p>
+                <h6 class="font-weight-bold">
+                    Medium</h6>
+                    <p>Link to view/download</p>
+    </div>
+</div>
+<!-- /Attachments-->

@@ -89,7 +89,9 @@ namespace Hustlers.Controllers
 
             if(ModelState.IsValid)
             {
-                bool isJobSeekerRegistered = _userService.isJobSeekerRegistered(userModel);
+                userModel.RoleName = "JobSeeker";
+                userModel.UserId = Guid.NewGuid().ToString();
+                bool isJobSeekerRegistered = _userService.IsUserRegistered(userModel);
 
                 if (isJobSeekerRegistered)
                 {

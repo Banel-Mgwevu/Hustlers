@@ -47,24 +47,41 @@ namespace Hustlers.Domain.Services
             }
 
             return user;
+        }   
+        
+        public User GetByUserId(string id)
+        {
+            var user = new User();
+
+            try
+            {
+
+                 user = userRepository.FindByCondition(x => x.UserId.Equals(id)).FirstOrDefault();
+                logger.LogInformation("User " + user.UserId + "retrieved");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+            }
+
+            return user;
         }
 
-        public bool isJobSeekerRegistered(User user)
+        public bool IsUserRegistered(User user)
         {
             var isRegistered = false;
 
             try
             {
                 var tempUser = userRepository.FindByCondition(x => x.Username.Equals(user.Username)).FirstOrDefault();
-
+                
                 if(tempUser != null)
                 { return isRegistered; }
 
                 user.Id = Guid.NewGuid().ToString();
                 user.CreatedDate = DateTime.Now;
                 user.IsActive = true;
-                user.RoleName = "JobSeeker";
-                user.UserId = Guid.NewGuid().ToString();
+                //user.UserId = Guid.NewGuid().ToString();
                 userRepository.Insert(user);
                 logger.LogInformation("User " + user.Username + "registered");
                 isRegistered = true;

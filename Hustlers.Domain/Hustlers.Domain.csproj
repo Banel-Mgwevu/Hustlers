@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Models\JobSeekerViewModel\" />
     <Folder Include="Models\AdminViewModel\" />
-    <Folder Include="Models\RecruiterViewModel\" />
     <Folder Include="Models\SharedViewModel\" />
   </ItemGroup>
 
