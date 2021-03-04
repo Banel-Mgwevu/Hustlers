@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Hustlers.Domain.Entities
 {
+    [Table("workexperience")]
     public class WorkExperience : HustlersEntity
     {
         public string JobTitle { set; get; }

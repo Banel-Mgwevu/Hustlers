@@ -23,6 +23,9 @@ namespace Hustlers.Domain.IOC
             service.AddTransient<IJobAdvertService, JobAdvertService>();
             service.AddTransient<IProvinceService, ProvinceService>();
             service.AddTransient<ICityService, CityService>();
+            service.AddTransient<IExperienceLevelService, ExperienceLevelService>();
+            service.AddTransient<IJobCategoryService, JobCategoryService>();
+            service.AddTransient<IJobTypeService, JobTypeService>();
             return service;
         }
 

@@ -3,14 +3,16 @@ using System;
 using Hustlers.infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hustlers.Infrastructure.Migrations
 {
     [DbContext(typeof(HustlersContext))]
-    partial class HustlersContextModelSnapshot : ModelSnapshot
+    [Migration("20210303172730_RemovedDutiesTable")]
+    partial class RemovedDutiesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

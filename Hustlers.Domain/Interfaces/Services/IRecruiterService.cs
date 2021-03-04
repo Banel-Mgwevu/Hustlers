@@ -10,6 +10,7 @@ namespace Hustlers.Domain.Interfaces.Services
         bool Create(CreateRecruiterViewModel createRecruiterViewModel);
         void Update(EditRecruiterViewModel editRecruiterViewModel);
         Recruiter Get(string id);
+        IList<Recruiter> Get();
         IList<ViewRecruiterViewModel> GetAll(string id);
         IQueryable<Recruiter> GetByCompanyId(string companyId);
         bool Delete(string id);

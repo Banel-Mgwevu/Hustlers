@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Hustlers.Domain.Entities
 {
+    [Table("education")]
     public class Education : HustlersEntity
     {
         public string GraduationYear { set; get; }

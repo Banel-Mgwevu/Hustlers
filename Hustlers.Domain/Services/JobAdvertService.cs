@@ -1,7 +1,9 @@
 ﻿using Hustlers.Domain.Entities;
+using Hustlers.Domain.Interfaces.Helpers;
 using Hustlers.Domain.Interfaces.Repositories;
 using Hustlers.Domain.Interfaces.Services;
 using Hustlers.Domain.Models;
+using Hustlers.Domain.Models.JobAdvertViewModel;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,29 +18,54 @@ namespace Hustlers.Domain.Services
         IRepository<Recruiter> recruiterRepository;
         IRepository<JobSeeker> jobSeekerRepository;
         IRepository<JobAdvert> jobAdvertRepository;
-
+        IStringManipulator _stringManipulator;
         ILogger<JobAdvertService> logger;
 
+        private readonly ICompanyService _companyService;
+        private readonly IExperienceLevelService _experienceLevelService;
+        private readonly IProvinceService _provinceService;
+        private readonly IJobTypeService _jobTypeService;
+        private readonly IRecruiterService _recruiterService;
+        private readonly IJobCategoryService _jobCategoryService;
+        private readonly ICityService _cityService;
+
         public JobAdvertService(ILogger<JobAdvertService> logger, IRepository<User> userRepository, IRepository<Recruiter> recruiterRepository,
-            IRepository<JobSeeker> jobSeekerRepository, IRepository<JobAdvert> jobAdvertRepository)
+            IRepository<JobSeeker> jobSeekerRepository, IRepository<JobAdvert> jobAdvertRepository, IStringManipulator stringManipulator,
+            ICompanyService companyService, IExperienceLevelService experienceLevelService, IProvinceService provinceService, IRecruiterService recruiterService, 
+            IJobCategoryService jobCategoryService, IJobTypeService jobTypeService, ICityService cityService
+            )
         {
             this.recruiterRepository = recruiterRepository;
             this.jobAdvertRepository = jobAdvertRepository;
+            _companyService = companyService;
+            _provinceService = provinceService;
+            _recruiterService = recruiterService;
+            _cityService = cityService;
+            _experienceLevelService = experienceLevelService;
+            _jobCategoryService = jobCategoryService;
+            _jobTypeService = jobTypeService;
+            _stringManipulator = stringManipulator;
             this.logger = logger;
         }
-        public void Create(JobAdvert jobAdvert)
+        public void Create(CreateJobAdvertViewModel createJobAdvertViewModel)
         {
-            jobAdvert.Id = Guid.NewGuid().ToString();
+            //Breakdown qualification and experience when we disiplay to users
+            // var qualificationList = _stringManipulator.BreakDownText(createJobAdvertViewModel.Qualifications);
+            //var experience = _stringManipulator.BreakDownText(createJobAdvertViewModel.Experience);
 
-            try
+            //var duties = _stringManipulator.BreakDownText(createJobAdvertViewModel.Duties);
+
+            var JobAdvert = new JobAdvert 
             {
-                this.jobAdvertRepository.Insert(jobAdvert);
-                logger.LogInformation("Job advert " + jobAdvert.Id + "registered");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, ex.Message);
-            }
+                Id = Guid.NewGuid().ToString(), IsActive = true, Introduction = createJobAdvertViewModel.Introduction,Caption = createJobAdvertViewModel.Caption,
+                Qualifications = createJobAdvertViewModel.Qualifications, Experience = createJobAdvertViewModel.Experience, JobTypeId = createJobAdvertViewModel.JobTypeId,
+                Remuneration = createJobAdvertViewModel.Remuneration, CityId = createJobAdvertViewModel.CityId, RecruiterId = createJobAdvertViewModel.RecruiterId,
+                CompanyId = createJobAdvertViewModel.CompanyId, ExperienceLevelId = createJobAdvertViewModel.ExperienceLevelId, JobCategoryId = createJobAdvertViewModel.JobCategoryId,
+                CreatedDate = DateTime.Now, StartDate = createJobAdvertViewModel.StartDate, EndDate = createJobAdvertViewModel.EndDate
+            };
+            int id = 0;
+            jobAdvertRepository.Insert(JobAdvert);
+
         }
 
         public void Delete(string id)
@@ -92,18 +119,9 @@ namespace Hustlers.Domain.Services
             return (IQueryable<JobAdvert>)JobAdverts;
         }
 
-        public void Update(JobAdvert jobAdvert)
+        public void Update(CreateJobAdvertViewModel createJobAdvertViewModel)
         {
-            try
-            {
-                var modelToUpdate = jobAdvertRepository.Get(jobAdvert.Id);
-                jobAdvertRepository.Update(modelToUpdate);
-                logger.LogInformation("Advert " + jobAdvert.Id + "updated");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, ex.Message);
-            }
+            throw new NotImplementedException();
         }
     }
 }

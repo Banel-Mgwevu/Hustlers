@@ -34,7 +34,6 @@ namespace Hustlers.infrastructure.DbContexts
         public DbSet<User> User { get; set; }
         public DbSet<WorkExperience> WorkExperience { get; set; }
         public DbSet<Attachment> Attachment { get; set; }
-        public DbSet<Duties> Duties { get; set; }
         public DbSet<ExperienceLevel> ExperienceLevel { get; set; }
         public DbSet<JobSeekerJobApplications> JobSeekerJobApplications { get; set; }
         public DbSet<JobAdvert> JobAdvert { get; set; }
@@ -44,7 +43,7 @@ namespace Hustlers.infrastructure.DbContexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseMySql("Server = localhost; Database = recruitment_db; Uid = root; Pwd = nnrrr");
+                optionsBuilder.UseMySql(configuration.GetConnectionString("Connection"));
             }
         }
     }

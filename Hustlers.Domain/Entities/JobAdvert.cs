@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Hustlers.Domain.Entities
 {
+    [Table("jobadvert")]
     public class JobAdvert : HustlersEntity
     {   /**
          * Remember to add Statue for 
@@ -14,6 +15,7 @@ namespace Hustlers.Domain.Entities
         public string Caption { set; get; }
         public string Introduction { set; get; }
         public string Qualifications { set; get; }
+        public string Duties { set; get; }
         public string Experience { set; get; }
         public string Remuneration { set; get; }
         public DateTime? StartDate { set; get; }

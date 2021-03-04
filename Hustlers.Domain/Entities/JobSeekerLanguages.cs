@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Hustlers.Domain.Entities
 {
+    [Table("jobseekerlanguages")]
     public class JobSeekerLanguages : HustlersEntity
     {
         public string JobSeekerId { set; get; }

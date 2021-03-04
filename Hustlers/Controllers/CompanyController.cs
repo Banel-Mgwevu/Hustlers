@@ -125,7 +125,7 @@ namespace Hustlers.Controllers
                 //Update here
                     editCompanyViewModel.CompanyId = id;
                     _companyService.Update(editCompanyViewModel);
-                    return RedirectToAction("JobSeekerRegistered", "User");
+                    return RedirectToAction(nameof(Index));
                 }
                     
                 return View("Edit",PrepareCompanyEdit(id));

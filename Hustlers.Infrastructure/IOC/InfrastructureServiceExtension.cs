@@ -40,7 +40,6 @@ namespace Hustlers.Infrastructure.IOC
             service.AddTransient<IRepository<Address>, Repository<Address>>();
 
             service.AddTransient<IRepository<Attachment>, Repository<Attachment>>();
-            service.AddTransient<IRepository<Duties>, Repository<Duties>>();
             service.AddTransient<IRepository<ExperienceLevel>, Repository<ExperienceLevel>>();
             service.AddTransient<IRepository<JobAdvert>, Repository<JobAdvert>>();
             service.AddTransient<IRepository<JobSeekerJobApplications>, Repository<JobSeekerJobApplications>>();
@@ -51,6 +50,7 @@ namespace Hustlers.Infrastructure.IOC
             service.AddTransient<IRepository<WorkExperience>, Repository<WorkExperience>>();
             service.AddTransient<IPasswordEncryption, PasswordEncryption>();
             service.AddTransient<ICompanyRepository, CompanyRepository>();
+            service.AddTransient<IStringManipulator, StringManipulator>();
             return service;
         }
     }

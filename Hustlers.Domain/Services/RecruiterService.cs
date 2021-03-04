@@ -81,6 +81,12 @@ namespace Hustlers.Domain.Services
         {
             var recruiter = recruiterRepository.Get(id);
             return recruiter;
+        }        
+        //JobAdvertCreate
+        public IList<Recruiter> Get()
+        {
+            var recruiters = recruiterRepository.Get();
+            return recruiters;
         }
 
         //Admin

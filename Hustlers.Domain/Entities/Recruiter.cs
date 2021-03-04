@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hustlers.Domain.Entities
 {
+    [Table("recruiter")]
     public class Recruiter : HustlersEntity
     {
         public string FirstName { set; get; }

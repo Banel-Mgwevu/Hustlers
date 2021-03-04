@@ -1,5 +1,6 @@
 ﻿using Hustlers.Domain.Entities;
 using Hustlers.Domain.Models;
+using Hustlers.Domain.Models.JobAdvertViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Hustlers.Domain.Interfaces.Services
 {
     public interface IJobAdvertService
     {
-        void Create(JobAdvert jobAdvert);
-        void Update(JobAdvert jobAdvert);
+        void Create(CreateJobAdvertViewModel createJobAdvertViewModel);
+        void Update(CreateJobAdvertViewModel createJobAdvertViewModel);
         JobAdvert Get(string id);
         IList<JobAdvert> GetAll();
         //Filter with JobType, JobCategory and Province

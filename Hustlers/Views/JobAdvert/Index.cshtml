@@ -1,53 +1,44 @@
-﻿
+﻿@model CreateJobAdvertViewModel;
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminRecruiterLayout.cshtml";
 }
 
 <h5 class="page-title"> Create Job Advert</h5>
-<form>
+<form asp-action="Create" asp-controller="JobAdvert" method="POST">
     <div class="form-row">
         <div class="col-md-4 mb-3">
-            <label for="Introduction">Introduction</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label asp-for="Introduction">Introduction</label>
+            <textarea name="Introduction"class="form-control" rows="3"></textarea>
         </div>
 
         <div class="col-md-4 mb-3">
-            <label for="Qualifications">Qualifications</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label asp-for="Qualifications">Qualifications</label>
+            <textarea name="Qualifications" class="form-control" rows="3"></textarea>
         </div>
 
         <div class="col-md-4 mb-3">
-            <label for="Experience">Experience</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label asp-for="Experience">Experience</label>
+            <textarea name ="Experience"class="form-control" rows="3"></textarea>
         </div>
 
     </div>
 
     <div class="form-row">
+
         <div class="col-md-4 mb-3">
-            <label for="Remuneration">Remuneration</label>
-            <input type="text" name="Remuneration" class="form-control" id="validationDefault01" value="R10 000 to R20 000" required>
+            <label asp-for="Duties">Duties</label>
+            <textarea name="Duties" class="form-control" rows="3"></textarea>
         </div>
 
         <div class="col-md-4 mb-3">
-
-            <label for="ExperienceLevel">ExperienceLevel</label>
-            <select name="ExperienceLevel" class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-                <option>...</option>
-            </select>
+            <label asp-for="Remuneration">Remuneration</label>
+            <input type="text" name="Remuneration" class="form-control" placeholder="R10 000 to R30 000">
         </div>
 
         <div class="col-md-4 mb-3">
-
-            <label for="JobCategory">JobCategory</label>
-            <select name="JobCategory" class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-                <option>...</option>
-            </select>
+            <label asp-for="Caption">Caption</label>
+            <input type="text" name="Caption" class="form-control" placeholder="Software Engineer">
         </div>
 
     </div>
@@ -56,45 +47,57 @@
 
         <div class="col-md-4 mb-3">
 
-            <label for="JobType">JobType</label>
-            <select name="JobType" class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-                <option>...</option>
+            <label asp-for="ExperienceLevelId">ExperienceLevel</label>
+            <select name="ExperienceLevelId" asp-items="@(new SelectList(Model.ExperienceLevels,"Id","Description"))" class="custom-select form-control">
             </select>
         </div>
 
         <div class="col-md-4 mb-3">
 
-            <label for="Company">Company</label>
-            <select name="Company" class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-                <option>...</option>
+            <label asp-for="JobCategoryId">JobCategory</label>
+            <select name="JobCategoryId" asp-items="@(new SelectList(Model.JobCategories,"Id","Name"))" class="custom-select form-control">
             </select>
         </div>
 
         <div class="col-md-4 mb-3">
 
-            <label for="Recruiter">Recruiter</label>
-            <select name="Recruiter" class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-                <option>...</option>
+            <label asp-for="JobTypeId">JobType</label>
+            <select name="JobTypeId" asp-items="@(new SelectList(Model.JobTypes,"Id","Description"))" class="custom-select form-control">
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label asp-for="CompanyId">Company</label>
+            <select name="CompanyId" asp-items="@(new SelectList(Model.Companies,"Id","CompanyName"))" class="custom-select form-control">
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label asp-for="CityId">City</label>
+            <select name="CityId" asp-items="@(new SelectList(Model.Cities,"Id","Name"))" class="custom-select form-control">
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <label for="RecruiterId">Recruiter</label>
+            <select name="RecruiterId" asp-items="@(new SelectList(Model.Recruiters,"Id","FirstName"))" class="custom-select form-control">
             </select>
         </div>
 
         <div class="col-md-4">
-            <label for="StartDate">StartDate</label>
+            <label asp-for="StartDate">StartDate</label>
 
-            <input type="date" name="StartDate" class="form-control" id="" value="2014-08-03" min="2021-02-27" max="2022-01-01">
+            <input type="date" name="StartDate" class="form-control" placeholder="2020-03-03" min="2020-03-04" max="2022-01-01">
 
         </div>
 
         <div class="col-md-4">
-            <label for="EndDate">EndDate</label>
+            <label asp-for="EndDate">EndDate</label>
 
-            <input type="date" name="EndDate" class="form-control" id="" min="2021-02-27" max="2022-01-01" value="2021-02-27">
+            <input type="date" name="EndDate" class="form-control" min="2020-03-04" max="2022-01-01" placeholder="2020-01-02">
 
         </div>
 
